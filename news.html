@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
+<html lang="zh-TW"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>最新消息 - 同齊咖吡 TOGETHER COFFEE PROJECT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&amp;family=Noto+Sans+TC:wght@300;400;500;700&amp;family=Noto+Serif+TC:wght@400;600;700&amp;display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,19 +10,23 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         :root {
-            --brand-blue: #4C6A92;
-            --brand-blue-dark: #3a5270;
-            --text-dark: #333;
-            --text-gray: #666;
-            --bg-light: #f9f9f9;
-            --white: #ffffff;
+            --brand-blue: #223843;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --bg-cream: #faf8f5;
+            --font-serif: "Noto Serif TC", serif;
+            --font-sans: "Noto Sans TC", sans-serif;
         }
 
         body {
-            font-family: 'Noto Sans TC', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            font-family: var(--font-sans);
+            color: #2c2c2c;
+            background-color: #faf8f5;
             cursor: none;
             overflow-x: hidden;
         }
@@ -35,24 +37,21 @@
 
         /* Custom Cursor */
         #custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--brand-blue);
-            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            background: rgba(76, 106, 146, 0.15);
+            border: 1px solid var(--brand-blue);
+            border-radius: 50% !important;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            transition: transform 0.15s ease, opacity 0.15s ease;
-            opacity: 0;
-        }
-
-        #custom-cursor.active {
-            opacity: 1;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
         }
 
         #custom-cursor.hover {
-            transform: scale(1.5);
-            background-color: rgba(76, 106, 146, 0.1);
+            transform: translate(-50%, -50%) scale(1.5);
+            background: rgba(76, 106, 146, 0.25);
         }
 
         /* Navbar */
@@ -61,41 +60,43 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(76, 106, 146, 0.1);
             z-index: 1000;
-            padding: 1.2rem 0;
+            padding: 1.5rem 5%;
         }
 
         .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--brand-blue);
+            display: block;
+            height: 90px;
             text-decoration: none;
-            letter-spacing: 2px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
-            align-items: center;
+            gap: 3rem;
+            list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
+            color: #2c2c2c;
+            font-weight: 700;
             font-size: 0.95rem;
+            letter-spacing: 1px;
             transition: color 0.3s ease;
             display: flex;
             align-items: center;
@@ -129,16 +130,48 @@
             transition: all 0.3s ease;
         }
 
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--brand-blue);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            background: #4c6a92;
+            transform: translateY(-2px);
+        }
+
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
         /* Page Header */
         .section-header {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 8rem 2rem 3rem;
+            padding: 10rem 2rem 3rem;
             text-align: center;
         }
 
         .serif-italic {
-            font-family: 'Noto Serif TC', serif;
+            font-family: var(--font-serif);
             font-style: italic;
             font-size: 1rem;
             color: var(--brand-blue);
@@ -147,9 +180,9 @@
         }
 
         .serif-bold {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 900;
             color: var(--text-dark);
             margin-bottom: 1rem;
         }
@@ -181,6 +214,20 @@
         .news-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .news-card:target {
+            animation: highlight 2s ease;
+            border: 2px solid var(--brand-blue);
+        }
+
+        @keyframes highlight {
+            0% {
+                background-color: rgba(94, 129, 172, 0.2);
+            }
+            100% {
+                background-color: var(--white);
+            }
         }
 
         .news-date {
@@ -223,25 +270,68 @@
             gap: 0.8rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 2.5rem 2rem;
+                /* Footer */
+        .footer {
+            background: #223843;
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .footer-social {
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
+        .footer-follow-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-sans);
         }
 
-        .footer-copyright {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            letter-spacing: 1px;
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
         }
+
+        .footer .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .footer .social-links a svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 0;
+        }
+
+        
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -354,87 +444,133 @@
             width: auto;
         }
     </style>
-</head>
+<style id="kgp-selected-style">
+  [data-kgp-selected]::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 4px;
+    outline: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 10px rgba(255, 107, 53, 0.4) !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  [data-kgp-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-kgp-selected],
+  img[data-kgp-hover-selected],
+  [data-kgp-hover-selected],
+  [item-kgp-click-selected],
+  [item-kgp-selected] {
+    border: 3px solid #FF6B35 !important;
+    box-shadow: 0 0 0 1px rgba(255, 107, 53, 0.3), 0 0 15px rgba(255, 107, 53, 0.5) !important;
+    border-radius: 4px;
+  }
+
+  [data-kgp-hover-selected]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 4px;
+    outline: 2px solid #FFA366 !important;
+    box-shadow: 0 0 0 1px rgba(255, 163, 102, 0.3), 0 0 8px rgba(255, 163, 102, 0.4) !important;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  [data-kgp-hover-selected] {
+    position: relative;
+    outline: none;
+  }
+</style></head>
 <body>
     <div id="custom-cursor"></div>
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">同齊咖吡</a>
+            <a href="index.html" class="logo"><img src="./logo.png" alt="同齊咖吡"></a>
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html"><span>01</span> HOME</a>
-                <a href="menu.html"><span>02</span> MENU</a>
-                <a href="news.html" class="active"><span>03</span> NEWS</a>
-                <a href="franchise.html"><span>04</span> JOIN US</a>
-                <a href="location.html"><span>05</span> STORES</a>
-            </div>
-        </div>
+                        <div class="nav-links" id="navLinks">
+                <a href="menu.html">菜單</a>
+                <a href="franchise.html">加盟計畫</a>
+                <a href="space-rental.html">空間租賃</a>
+                <a href="location.html">店面位置</a>
+                <a href="story.html">品牌故事</a>
+                <a href="gallery.html">特色餐食</a>
+            </div></div>
     </nav>
 
     <section class="section-header">
         <div class="serif-italic"># WHAT'S NEW</div>
-        <h1 class="serif-bold">最新消息 & 每月活動</h1>
+        <h1 class="serif-bold">最新消息 &amp; 每月活動</h1>
     </section>
 
     <section class="news-section">
         <div class="news-grid">
-            <article class="news-card">
-                <div class="news-date">2026.04</div>
-                <h2 class="news-title">【兒童節企劃】小小咖啡師著色活動</h2>
-                <p class="news-desc">於 4/1 - 4/5 期間,來店領取專屬著色紙並完成作品,即可兌換同齊手工餅乾一份。</p>
+            <article class="news-card" id="news-1" style="">
+                <div class="news-date" style="">2026.02.01</div>
+                <h2 class="news-title">👑 作伙同行·即刻啟程｜尊爵會員限時招募</h2>
+                <p class="news-desc">除了 2330 台積電，北屯還有更溫暖的績優股。定期分紅共享品牌成長、入會金 100% 抵消費、北屯店生意越好獎金越多。享免排隊特權、新品黑卡之夜、首席優先預訂。與其當個客人，不如當個「生活股東」。限時招募，名額有限！</p>
+                <a href="#news-1" class="read-more">DETAILS ↗</a>
+            </article>
+
+            <article class="news-card" id="news-2" style="">
+                <div class="news-date" style="">2025.12.25</div>
+                <h2 class="news-title">🎄 聖誕包場專案｜在同齊咖啡感受溫暖</h2>
+                <p class="news-desc">和親友、三五好友，在笑聲與香氣中度過美好時光。無論是聖誕交換禮物、溫馨聚餐，都能在這裡找到屬於你的節日氣氛。可容納 5–25 人小包場，附投影設備、氣氛滿分。</p>
+                <a href="space-rental.html" class="read-more" style="">DETAILS ↗</a>
+            </article>
+
+            <article class="news-card" id="news-3" style="">
+                <div class="news-date" style="">2025.01.05</div>
+                <h2 class="news-title">🍞 剝皮辣椒燻雞佛卡夏｜獨享時光，也要好好對自己辣一下</h2>
+                <p class="news-desc">義式麵包＋中式靈魂辣椒，碰撞新火花。坐下來，喝杯咖啡，讓剝皮辣椒的辣，幫你整理今天的疲憊。在同齊，我們不止賣咖啡，也留一口溫熱給你繼續生活的熱情。</p>
+                <a href="menu.html" class="read-more">DETAILS ↗</a>
+            </article>
+
+            <article class="news-card" id="news-4">
+                <div class="news-date" style="">2026.02.28</div>
+                <h2 class="news-title">VIP 儲值專案｜企業與常客專屬優惠</h2>
+                <p class="news-desc">單次儲值滿 $10,000 元，即成為 VIP 會員。加碼贈送 $1,500 點數，場地租借再享 9 折優惠。儲值金無使用期限，全台分店皆可通用。</p>
+                <a href="space-rental.html" class="read-more">DETAILS ↗</a>
+            </article>
+
+            <article class="news-card" id="news-5">
+                <div class="news-date" style="">2025.07.01</div>
+                <h2 class="news-title">同齊福利社｜寄杯卡優惠活動</h2>
+                <p class="news-desc">里長美式：買10送3杯特價999元(現省300)、買15送5杯特價1499元(現省500)、買20送7杯特價1999元。里長拿鐵：買10送2杯特價1299元(現省260)、買15送4杯特價1949元(現省520)、買20送6杯特價2599元(現省780)。一杯咖啡，千種連結。</p>
                 <a href="#" class="read-more">DETAILS ↗</a>
             </article>
 
             <article class="news-card">
-                <div class="news-date">2026.03</div>
-                <h2 class="news-title">春季限定:螺旋花拿鐵新上市</h2>
-                <p class="news-desc">選用中深焙里民配方豆,搭配細緻拉花與秘製糖漿,感受春日的溫潤風味。</p>
-                <a href="#" class="read-more">DETAILS ↗</a>
-            </article>
-
-            <article class="news-card">
-                <div class="news-date">2026.03</div>
+                <div class="news-date" style="outline: none;">2023.08.20</div>
                 <h2 class="news-title">【會員專屬】集點卡升級計畫</h2>
-                <p class="news-desc">全新數位集點系統上線,消費滿百即可累積點數,兌換更多專屬優惠與限定商品。</p>
-                <a href="#" class="read-more">DETAILS ↗</a>
-            </article>
-
-            <article class="news-card">
-                <div class="news-date">2026.02</div>
-                <h2 class="news-title">情人節限定:雙人下午茶套餐</h2>
-                <p class="news-desc">精選手工甜點搭配兩杯精品咖啡,與重要的人共享浪漫時光。限量供應至 2/28。</p>
-                <a href="#" class="read-more">DETAILS ↗</a>
-            </article>
-
-            <article class="news-card">
-                <div class="news-date">2026.01</div>
-                <h2 class="news-title">新年新氣象:店面翻新完成</h2>
-                <p class="news-desc">北屯旗艦店全新裝潢完工,增設舒適座位區與閱讀空間,歡迎蒞臨體驗。</p>
-                <a href="#" class="read-more">DETAILS ↗</a>
-            </article>
-
-            <article class="news-card">
-                <div class="news-date">2025.12</div>
-                <h2 class="news-title">年末感謝祭:咖啡豆優惠活動</h2>
-                <p class="news-desc">自家烘焙咖啡豆全系列 85 折優惠,感謝一年來的支持與陪伴。</p>
+                <p class="news-desc">全新數位集點系統上線，消費滿百即可累積點數，兌換更多專屬優惠與限定商品。會員享有優先預約權及生日專屬優惠。</p>
                 <a href="#" class="read-more">DETAILS ↗</a>
             </article>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-social">FB | IG | LINE</div>
-        <div class="footer-copyright">© 2026 TOGETHER COFFEE PROJECT.</div>
-        <a href="https://kuse.ai" class="kuse-branding" target="_blank">
-            <span>made with</span>
-            <svg viewBox="0,0,160,44" xmlns="http://www.w3.org/2000/svg"><path d="m.01,20.65C-.43,8.25,9.3-2.03,22.04.34,34.78,2.72,43.29,8.32,43.29,22.9s-8.66,19.01-22.03,20.3C7.9,44.5.46,33.05.01,20.65z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="m146.76,7.94c8.07,0,13.24,6.15,13.24,14.58v1.39h-20.75c.45,4.05,3.51,7.37,8.57,7.37,2.62,0,5.73-1.05,7.62-2.94l2.67,3.83c-2.67,2.55-6.62,3.88-10.9,3.88-8.07,0-14.08-5.6-14.08-14.08,0-7.76,5.67-14.02,13.63-14.02zm0,4.77c-5.01,0-7.29,3.83-7.57,7.1h15.13c-.11-3.16-2.28-7.1-7.57-7.1z" fill="currentColor"/><path d="m86.64,24.49c0,4.15,2.39,6.84,6.84,6.84,4.4,0,6.84-2.69,6.84-6.84V8.55h5.37v16.33c0,6.7-4.06,11.14-12.21,11.14-8.21,0-12.21-4.5-12.21-11.09V8.55h5.37v15.94zm32.99-16.55c4.49,0,8.06,1.47,10.6,3.86l-2.59,3.81c-2.05-2-5.28-3.08-8.06-3.08-2.88,0-4.84,1.37-4.84,3.32,0,1.91,2.64,2.54,5.81,3.27,4.59,1.08,10.26,2.4,10.26,8.46,0,4.94-3.76,8.41-11.14,8.41-4.98,0-8.94-1.76-11.24-4.11l2.54-4.11c1.86,1.91,5.18,3.67,8.84,3.67,3.91,0,5.57-1.66,5.57-3.62,0-2.3-2.88-2.98-6.21-3.76-4.54-1.08-9.87-2.3-9.87-8.06,0-4.5,4.2-8.06,10.31-8.06zM60.79,20.82,71.44,8.55h6.5L66.46,21.26,78.82,35.44h-6.5l-9.28-11.1-2.25,2.49v8.6h-5.33V8.55h5.33v12.27z" fill="currentColor"/></svg>
-        </a>
-    </footer>
+    
 
     <script>
         // Custom Cursor
@@ -488,5 +624,27 @@
     </script>
 
     <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
-</body>
-</html>
+
+    
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-follow-title">FOLLOW US</h3>
+            <div class="social-links">
+                <a href="https://www.instagram.com/ttcr_taichung/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                </a>
+                <a href="https://www.facebook.com/ttcrtaichung" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+                </a>
+                <a href="https://lin.ee/PbNEE8B" target="_blank" rel="noopener noreferrer" aria-label="LINE">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"></path></svg>
+                </a>
+            </div>
+            <p class="footer-text">©2021 TANGTSE COFFEE ROASTERY</p>
+        </div>
+    </footer>
+
+
+</body></html>
